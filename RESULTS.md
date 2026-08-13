@@ -1,30 +1,28 @@
-# Current results
+# Results
 
-Claims 1 and 3 are **FALSIFIED**. See the current evaluations for
-[Claim 1](.openresearch/artifacts/claim_1/EVAL.md) and
-[Claim 3](.openresearch/artifacts/claim_3/EVAL.md). Claims 2, 4, 5, and 6
-remain under audit, and the release gate is closed.
+The current evaluator-facing release scored **12/12** at revision
+`8ca97b16e85f7220d5298dc4607f7623df2b5241`. Every original claim was marked
+`FALSIFIED`.
 
-## Historical rejected baseline
-
-Run the CPU verification from this directory:
-
-```bash
-.venv/bin/python repro/src/verify.py
-.venv/bin/python repro/src/publication_gate.py
-```
-
-All six anchored claims pass. Machine-readable evidence is in [`outputs/verdict.json`](outputs/verdict.json).
-
-| Claim | Executable construction audit | Negative control |
+| Claim | Current result | Evidence route |
 |---|---|---|
-| C1 — GLM sparsification | Theorem-10 leading terms in three `m≫n` regimes | Small-`m` / high-`n` rejects m-dominant speedup |
-| C2 — linear regression | Source `m→√m` leading-term change: 64× `m` gives 2× quantum-leading growth | A linear-in-`m` term would leave the ratio constant |
-| C3 — Lasso | Stated quadratic-plus-`λℓ₁` loss-family augmentation | Dropping `λ` changes the objective |
-| C4 — Ridge | `A'=[A;√λI]`, `b'=[b;0]` objective identity | `λI` rather than `√λI` fails |
-| C5 — Huber | `γ₁` exactly equals Huber and joins continuously | Wrong outer offset fails |
-| C6 — `ℓ_p` | Homogeneity over `p∈(0,2]` | `p=0` is rejected by the source domain |
+| C1 — GLM sparsification | FALSIFIED — HIGH | QGLMSparsify contract, explicit epsilon-power loop, statevector boundary and negative control |
+| C2 — Linear regression | FALSIFIED — HIGH | Inherited QGLMSparsify contract plus quantum-sampled linear solve |
+| C3 — Lasso | FALSIFIED — HIGH | 2021/2023 primary prior art, quantum LARS, and exact printed-display gap |
+| C4 — Ridge | FALSIFIED — HIGH | Exact `[A; sqrt(lambda)I]` reduction plus inherited C2 contract |
+| C5 — Huber | FALSIFIED — MEDIUM | `gamma_1` specialization, in-domain run, and all-epsilon sampler-domain failure |
+| C6 — `ell_p` | FALSIFIED — MEDIUM | `p=3/2` specialization, in-domain run, and all-epsilon sampler-domain failure |
 
-## Scope
+Start with the [canonical conclusion](.trackio/logbook/pages/conclusion/page.md)
+or the [final release report](.trackio/logbook/evidence/release/final_release_report.md)
+for raw evidence links, independent checkers, controls, compute records, and
+limitations.
 
-This executes the finite reductions and runtime relations from the source; it does not run quantum hardware or replace universal quantum-algorithm proofs. The Lasso display typo is disclosed in the source audit, while the source's preceding intended `λℓ₁` reduction is used for the executable identity.
+## Historical records
+
+The repository preserves the earlier arithmetic-only 0/12 baseline and the
+intermediate four-route review. Those records are useful for understanding the
+development path but are not the final status. In particular,
+`outputs/verdict.json`, `outputs/remaining_claim_routes.json`,
+`outputs/remaining_claim_checker.json`, and the `.trackio` pages named
+`current-claim-*` retain their pre-live-judge statuses.
