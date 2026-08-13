@@ -135,13 +135,12 @@ rests on the proposed algorithm leaving its cited primitive's stated domain.
 
 ## Assessment
 
-The live score is 4/12 at revision
-`1d7460599344b8c93d085a9b283213a9d677ded3`. The conservative projected range
-for the next revision remains 4–12/12, with 12/12 the best-supported possible
-score and not a judge result.
+The live score is **12/12** at revision
+`8ca97b16e85f7220d5298dc4607f7623df2b5241`. The judge marked all six
+claims `FALSIFIED` and rated the reproduction quality `high`.
 
 Branches:
-[Claim 1](https://github.com/MachineLearning-Nerd/icml26-repro-TBSyYj4VV6-quantum-regression/tree/orx/c1-exact-qglmsparsify-contract-audit),
-[Claim 3](https://github.com/MachineLearning-Nerd/icml26-repro-TBSyYj4VV6-quantum-regression/tree/orx/c3-literal-lasso-corollary-counterexample),
-[accepted four-route audit](https://github.com/MachineLearning-Nerd/icml26-repro-TBSyYj4VV6-quantum-regression/tree/orx/c6-discriminating-negative-control),
-[exact downstream adjudication](https://github.com/MachineLearning-Nerd/icml26-repro-TBSyYj4VV6-quantum-regression/tree/orx/exact-downstream-corollary-adjudication).
+[Claim 1](https://github.com/MachineLearning-Nerd/icml26-quantum-regression/tree/audit/c1-qglmsparsify-contract),
+[Claim 3](https://github.com/MachineLearning-Nerd/icml26-quantum-regression/tree/audit/c3-lasso-counterexample),
+[accepted four-route audit](https://github.com/MachineLearning-Nerd/icml26-quantum-regression/tree/audit/c6-negative-control),
+[exact downstream adjudication](https://github.com/MachineLearning-Nerd/icml26-quantum-regression/tree/audit/downstream-corollary-adjudication).
