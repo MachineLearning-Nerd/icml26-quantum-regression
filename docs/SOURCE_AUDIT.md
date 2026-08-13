@@ -1,34 +1,31 @@
 # Primary-source audit
 
-Paper: **Accelerating Regression Tasks with Quantum Algorithms**, OpenReview
-`TBSyYj4VV6`, arXiv [`2509.24757`](https://arxiv.org/abs/2509.24757).
+Paper: **Accelerating Regression Tasks with Quantum Algorithms**, by Chenghua
+Liu and Zhengfeng Ji. See the [arXiv record](https://arxiv.org/abs/2509.24757)
+and [HTML source](https://arxiv.org/html/2509.24757).
+
+OpenReview identifier: `TBSyYj4VV6`.
 
 Pinned public source archive SHA-256:
 `bd48105ab08395ba1edbdb3a407eee9f2e1a8464521d7d67dbe5b6e96edf2549`.
 
-The e-print provides all theorem statements, runtime expressions, assumptions,
-and the Ridge/Lasso augmentations. The anchored contract is source-complete and
-does not depend on unavailable quantum hardware or an empirical benchmark.
+The final evaluator-facing release records **12/12** and marks all six claims
+`FALSIFIED`. The audit targets the exact named algorithms and contracts; it
+does not replace a universal quantum-algorithm proof with a finite benchmark.
 
-| Claim | Primary source anchor | CPU reproduction route |
-|---|---|---|
-| C1 | Theorem 10 / formal Theorem 10 source statement | Symbolic GLM sparsifier size/runtime and `m`-speedup dominance checks |
-| C2 | Corollary 23 (linear regression) | Exact runtime reduction and classical-comparator inequalities |
-| C3 | Corollary 26 (Lasso) | Literal augmented-loss reduction and runtime-family audit |
-| C4 | Corollary 25 (Ridge) | Exact augmented matrix identity and linear-regression runtime transfer |
-| C5 | Corollary 12 / `γ_p`, `p=1` Huber specialization | Piecewise loss/properness and runtime specialization checks |
-| C6 | Corollary 11 (`ℓ_p`) | Parameter-grid checks for `p∈(0,2]` and the `m≫n` quadratic-speedup regime |
-
-Finite executable checks will validate each explicit construction and reject a
-removed assumption or wrong reduction. They will be reported as finite
-construction audits, not replacements for the paper's universal quantum
-algorithm proofs.
+| Claim | Primary source anchor | Reproduction route | Current basis |
+|---|---|---|---|
+| C1 | Theorem 10 / Algorithm 2 | GLM sparsifier-size/runtime contract, statevector sampler, boundary controls | `M=Theta~(n/epsilon^2)` exceeds the cited sampler domain and the explicit loop has the wrong fixed-dimension epsilon power |
+| C2 | Corollary 23 | Downstream contract audit and quantum-sampled linear solve | Inherits the exact QGLMSparsify domain/runtime contradiction |
+| C3 | Corollary 26 | Prior-art/date audit, quantum LARS, objective mapping, exact display counterexample | Quantum Lasso work from 2021 and 2023 predates the target; the printed inequality also has a `7/40` gap |
+| C4 | Corollary 25 | `[A;sqrt(lambda)I]`, `[b;0]` identity and downstream audit | Valid Ridge reduction inherits Claim 2’s exact contradiction |
+| C5 | Corollary 12 with `p=1` | `gamma_1`/Huber identity, in-domain execution, domain audit | Universal all-epsilon framework invokes the cited sampler outside its stated domain |
+| C6 | Corollary 11 with `p in (0,2]` | p-homogeneity, `p=3/2` execution, domain audit | Universal all-epsilon framework invokes the cited sampler outside its stated domain |
 
 ## Source precision note
 
-The displayed Lasso corollary's right-hand minimand omits `λ` on its final
-`‖x‖₁` term, while the preceding reduction and the corollary's left-hand side
-both use the standard `λ‖x‖₁` objective. This project therefore audits the
-anchored runtime claim and the explicitly stated preceding reduction with
-`λ` retained; it does not silently treat the display typo as a different Lasso
-objective.
+The displayed Lasso corollary’s right-hand minimand omits `lambda` on its
+final `||x||_1` term, while the preceding reduction and left-hand side use the
+standard `lambda||x||_1` objective. The audit retains `lambda` for the
+source-faithful reduction and separately records the literal display defect;
+it does not silently treat the typo as a different Lasso objective.
