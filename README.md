@@ -1,58 +1,124 @@
-# Current reproduction campaign
+# Accelerating Regression Tasks with Quantum Algorithms
 
-This reproduction tests all six requested claims in arXiv:2509.24757. All six
-are now **FALSIFIED at their exact stated scope**. Claims 1, 2, and 4 have an
-explicit `epsilon^-2` processing step incompatible with their printed
-fixed-dimension `epsilon^-1` runtimes. Claims 5 and 6 quantify over every
-epsilon while explicitly invoking a sampler whose cited guarantee requires
-`M≤m`; the paper itself states the omitted
-`epsilon=Omega(sqrt(n/m))` condition. Claim 3’s firstness is contradicted by
-primary quantum Lasso papers from 2021 and 2023, before the target’s 2025
-publication; its printed corollary also has the exact gap `1 > 33/40`.
+Independent reproduction audit for [arXiv:2509.24757](https://arxiv.org/abs/2509.24757),
+“Accelerating Regression Tasks with Quantum Algorithms,” by Chenghua Liu and
+Zhengfeng Ji.
 
-The current live score is **4/12** at published revision
-`1d7460599344b8c93d085a9b283213a9d677ded3`. A conservative forecast for the
-next judge revision remains **4–12/12**, with **12/12 the best-supported
-possibility, not a judge result**. Claims 5–6 retain MEDIUM confidence because their
-falsification is a subroutine-domain contradiction rather than a separate
-end-to-end power lower bound. All formal runs are CPU-only.
+## Result at a glance
 
-Read the [illustrated report](reports/quantum-regression/report.md), open the
-[self-contained marimo notebook](notebooks/quantum_regression_reproduction.py),
-or inspect the [current evaluator logbook](.trackio/logbook/pages/index.md).
-The Molab notebook opens with embedded evidence and does not rerun formal
-experiments:
-[![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/MachineLearning-Nerd/icml26-repro-TBSyYj4VV6-quantum-regression/blob/main/notebooks/quantum_regression_reproduction.py)
+The evaluator-facing release received **12/12** at revision
+`8ca97b16e85f7220d5298dc4607f7623df2b5241`. The live judge marked all six
+original claims **FALSIFIED** and rated reproduction quality **high**. Claims
+1–4 have high scientific confidence; Claims 5–6 have medium confidence
+because their exact contradiction is a sampler-domain failure rather than a
+separate end-to-end lower bound.
 
-## Experiment log
+This is an audit of the paper’s named algorithms and exact stated contracts.
+It does not claim that every possible quantum regression algorithm fails, and
+it uses CPU/statevector simulations only—no quantum hardware or GPU.
 
-| Branch / experiment | Purpose or change | Exact run command | Assessment / outcome | Compute |
-|---|---|---|---|---|
-| `main` | Publication surface | Not run as an experiment (publication surface) | Mirrors the accepted candidate | N/A |
-| [`orx/judged-baseline-with-locked-uv-environment`](https://github.com/MachineLearning-Nerd/icml26-repro-TBSyYj4VV6-quantum-regression/tree/orx/judged-baseline-with-locked-uv-environment) | Freeze judged arithmetic baseline and uv lock | `uv sync --frozen && uv run python repro/src/verify.py && uv run python repro/src/publication_gate.py` | Historical rejected baseline; live judge 0/12 | Local, one process, 5s |
-| [`orx/c1-exact-qglmsparsify-contract-audit`](https://github.com/MachineLearning-Nerd/icml26-repro-TBSyYj4VV6-quantum-regression/tree/orx/c1-exact-qglmsparsify-contract-audit) | Exact Algorithm 2/Theorem 10 contract | `uv sync --frozen && uv run python repro/src/verify.py && uv run python repro/src/publication_gate.py` | Claim 1 FALSIFIED | Local, one process, 5s |
-| [`orx/c3-literal-lasso-corollary-counterexample`](https://github.com/MachineLearning-Nerd/icml26-repro-TBSyYj4VV6-quantum-regression/tree/orx/c3-literal-lasso-corollary-counterexample) | Exact Corollary 26 display counterexample | `uv sync --frozen && uv run python repro/src/verify.py && uv run python repro/src/publication_gate.py` | Scoped defect found; headline Claim 3 BLOCKED | Local, one process, 5s |
-| [`orx/c2-c4-c5-c6-four-route-audit`](https://github.com/MachineLearning-Nerd/icml26-repro-TBSyYj4VV6-quantum-regression/tree/orx/c2-c4-c5-c6-four-route-audit) | Four-route universal-claim audit | `uv sync --frozen && uv run python repro/src/verify.py && uv run python repro/src/publication_gate.py` | Rejected: C6 uniform control was nondiscriminating | HF `cpu-upgrade`, 64 CPUs, 9.241s scientific |
-| [`orx/c6-discriminating-negative-control`](https://github.com/MachineLearning-Nerd/icml26-repro-TBSyYj4VV6-quantum-regression/tree/orx/c6-discriminating-negative-control) | Replace C6 control and rerun cumulative suite | `uv sync --frozen && uv run python repro/src/verify.py && uv run python repro/src/publication_gate.py` | Claims 2/4/5/6 BLOCKED; checker passed | HF `cpu-upgrade`, 64 CPUs, 6.951s scientific, 21s job |
-| [`orx/exact-downstream-corollary-adjudication`](https://github.com/MachineLearning-Nerd/icml26-repro-TBSyYj4VV6-quantum-regression/tree/orx/exact-downstream-corollary-adjudication) | Exact downstream contracts, prior-art audit, cumulative gate | `uv sync --frozen && uv run python repro/src/verify.py && uv run python repro/src/publication_gate.py` | Claims 1–6 FALSIFIED; full gate passed | [HF `cpu-upgrade`](https://huggingface.co/jobs/DineshAI/6a6c29ac23ed89c748ec903e), nominal 8 vCPU; 64 visible logical CPUs, 11.926s scientific, 26s job |
-| [`orx/official-icml-template-and-hardware-accounting`](https://github.com/MachineLearning-Nerd/icml26-repro-TBSyYj4VV6-quantum-regression/tree/orx/official-icml-template-and-hardware-accounting) | Mandatory scope/cost template and precise CPU accounting | `uv sync --frozen && uv run python repro/src/verify.py && uv run python repro/src/publication_gate.py` | Full gate and official ICML validator passed | [HF `cpu-upgrade`](https://huggingface.co/jobs/DineshAI/6a6c2c4ab36a6516e96a3773), nominal 8 vCPU; 64 visible logical CPUs, 10.913s scientific, 26s job |
-| [`orx/direct-per-claim-verifier-source-links`](https://github.com/MachineLearning-Nerd/icml26-repro-TBSyYj4VV6-quantum-regression/tree/orx/direct-per-claim-verifier-source-links) | Expose verifier and independent-checker source on every canonical claim page | `uv sync --frozen && uv run python repro/src/verify.py && uv run python repro/src/publication_gate.py` | Full cumulative gate passed; Claims 1–6 FALSIFIED | [HF `cpu-upgrade`](https://huggingface.co/jobs/DineshAI/6a6c31d723ed89c748ec90e1), nominal 8 vCPU; 64 visible logical CPUs, 12.163s scientific, 27s job |
-| [`orx/statevector-quantum-pipeline-and-prior-lars`](https://github.com/MachineLearning-Nerd/icml26-repro-TBSyYj4VV6-quantum-regression/tree/orx/statevector-quantum-pipeline-and-prior-lars) | Execute the cited state-preparation circuit, regression sampling, and pre-target quantum LARS | `uv sync --frozen && uv run python repro/src/verify.py && uv run python repro/src/publication_gate.py` | Statevector checks and controls passed; non-toy `M=4m` target calls rejected | [HF `cpu-upgrade`](https://huggingface.co/jobs/DineshAI/6a6c3c8523ed89c748ec91ce), nominal 8 vCPU; 64 visible logical CPUs, 9.487s combined scientific runtime |
+The reader-facing evidence is organized in the [illustrated report](reports/quantum-regression/report.md),
+the [canonical conclusion](.trackio/logbook/pages/conclusion/page.md), the
+[final release report](.trackio/logbook/evidence/release/final_release_report.md),
+and the [live-verdict snapshot](.trackio/logbook/evidence/release/live_judge_verdict.json).
 
-The fixed command is:
+## Paper and scope
+
+The paper proposes a quantum GLM-sparsification framework for linear,
+multiple, Lasso, Ridge, Huber, `ell_p`, and `gamma_p` regression. Its central
+runtime is approximately
+`r*sqrt(m*n)/epsilon + poly(n, 1/epsilon)`, with a sparsifier of size roughly
+`n/epsilon^2`.
+
+The audit checks the exact theorem/corollary contracts, including their
+quantifiers, sampler preconditions, explicit loops, reductions, and claimed
+prior art. The pinned source archive is recorded in
+[`docs/SOURCE_AUDIT.md`](docs/SOURCE_AUDIT.md).
+
+## Claim-to-evidence ledger
+
+| Claim | Paper statement audited | How the result is produced | Canonical status |
+|---|---|---|---|
+| C1 — GLM sparsification | Theorem 10 / Algorithm 2 | [`claim1_runtime_audit.py`](repro/src/claim1_runtime_audit.py) checks `M=Theta~(n/epsilon^2)`, the cited `M<=m` sampler contract, and the explicit `M`-sample loop; the independent checker and statevector boundary controls are linked from the [Claim 1 page](.trackio/logbook/pages/claim-1/page.md). | FALSIFIED — HIGH |
+| C2 — Linear regression | Corollary 23 | [`downstream_contract_audit.py`](repro/src/downstream_contract_audit.py) follows the exact QGLMSparsify-to-solve chain and checks the inherited domain and epsilon-power contradiction; the [Claim 2 page](.trackio/logbook/pages/claim-2/page.md) records the sampled solve and controls. | FALSIFIED — HIGH |
+| C3 — Lasso regression | Corollary 26 and the firstness claim | [`claim3_lasso_counterexample.py`](repro/src/claim3_lasso_counterexample.py) checks prior quantum Lasso work, the objective mapping, and the exact printed-inequality gap; the [Claim 3 page](.trackio/logbook/pages/claim-3/page.md) records the quantum-LARS and negative-control evidence. | FALSIFIED — HIGH |
+| C4 — Ridge regression | Corollary 25 | The downstream audit verifies `[A; sqrt(lambda)I]`, `[b;0]` and transfers the C2 contradiction; see the [Claim 4 page](.trackio/logbook/pages/claim-4/page.md). | FALSIFIED — HIGH |
+| C5 — Huber regression | Corollary 12 with `p=1` | The downstream audit verifies the `gamma_1`/Huber specialization, in-domain execution, and the all-epsilon sampler-domain contradiction; see the [Claim 5 page](.trackio/logbook/pages/claim-5/page.md). | FALSIFIED — MEDIUM |
+| C6 — `ell_p` regression | Corollary 11 for `p in (0,2]` | The downstream audit checks p-homogeneity, an in-domain `p=3/2` execution, and the universal all-epsilon domain failure; see the [Claim 6 page](.trackio/logbook/pages/claim-6/page.md). | FALSIFIED — MEDIUM |
+
+The independent checkers are [`claim1_independent_checker.py`](repro/src/claim1_independent_checker.py),
+[`downstream_contract_checker.py`](repro/src/downstream_contract_checker.py),
+[`claim3_independent_checker.py`](repro/src/claim3_independent_checker.py),
+and [`quantum_statevector_checker.py`](repro/src/quantum_statevector_checker.py).
+The statevector audit reconstructs the cited sampling circuit and a prior
+quantum-LARS search; it tests the computational stages, not QRAM construction
+or fault-tolerant hardware.
+
+## Reproduce the published checks
+
+The locked environment is Python 3.12 with NumPy 2.3.2:
 
 ```bash
-uv sync --frozen && uv run python repro/src/verify.py && uv run python repro/src/publication_gate.py
+uv sync --frozen
+uv run python repro/src/verify.py
+uv run python repro/src/publication_gate.py
 ```
 
-## Historical rejected baseline
+The commands regenerate/check the local evidence contract. The final live
+judge result is preserved in the release snapshot linked above; rerunning
+locally does not create a new evaluator score.
 
-The material below describes the preserved verifier that received 0/12 from
-the live judge. It is not the current verification.
+## Branch organization
 
-Source-faithful CPU verification project for ICML 2026 paper `TBSyYj4VV6`
-(arXiv `2509.24757`). This project audits six source-anchored quantum
-complexity and reduction claims for GLM, linear, Lasso, Ridge, Huber, and
-`ℓ_p` regression.
+`main` is the canonical reader-facing release. The former `orx/*` branches
+are preserved as clean names grouped by purpose: `audit/*` contains claim and
+contract investigations, `experiment/*` contains executable quantum or scale
+runs, `integration/*` contains publication/logbook assembly, and `release/*`
+contains evaluator-facing release candidates and provenance checkpoints.
 
-The primary-source audit is in [`docs/SOURCE_AUDIT.md`](docs/SOURCE_AUDIT.md).
+The complete old-to-new mapping and the purpose of every branch are in
+[`branch-audit.md`](branch-audit.md). No branch name beginning with `orx/` is
+part of the cleaned collection.
+
+## Important historical records
+
+The repository preserves the development trail. In particular,
+`outputs/verdict.json`, `outputs/remaining_claim_routes.json`,
+`outputs/remaining_claim_checker.json`, and the `.trackio` pages named
+`current-claim-*` record the pre-final four-route review, where several claims
+were honestly marked `BLOCKED`. They are not the current live verdict. Use
+the `claim-*`, `executive-summary`, `conclusion`, and
+`evidence/release/final_release_report.md` pages for the final adjudication.
+
+## Citation
+
+```bibtex
+@misc{liu2025accelerating,
+  title         = {Accelerating Regression Tasks with Quantum Algorithms},
+  author        = {Chenghua Liu and Zhengfeng Ji},
+  year          = {2025},
+  eprint        = {2509.24757},
+  archivePrefix = {arXiv},
+  primaryClass  = {quant-ph},
+  doi           = {10.48550/arXiv.2509.24757}
+}
+```
+
+For the prior-art portion of Claim 3, see [Quantum Algorithms for the
+Pathwise Lasso](https://arxiv.org/abs/2312.14141) and [Quantum Algorithms and
+Lower Bounds for Linear Regression with Norm Constraints](https://arxiv.org/abs/2110.13086).
+
+## Thank you
+
+Thank you to Chenghua Liu and Zhengfeng Ji for making the paper and its source
+available for independent examination. The work provided a useful, concrete
+case study for testing quantum regression claims against explicit algorithmic
+contracts, reductions, controls, and reproducible evidence. This repository
+is an independent audit and does not imply endorsement by the authors.
+
+## Attribution and license
+
+Repository maintenance and audit commits are attributed to
+**MachineLearning-Nerd**. The paper, source archive, and cited prior work
+remain the property of their respective authors and publishers; consult the
+upstream paper for its license and reuse terms.
