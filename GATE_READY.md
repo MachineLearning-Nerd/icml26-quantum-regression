@@ -2,10 +2,10 @@
 
 `FULL_GATE_READY: TBSyYj4VV6`
 
-The current six-claim gate passed on run
-`76b4b82b-35c7-4a24-804a-b60a11d4f67f`. The published Space revision is
-`851c05f89e1c8340ea539db391da196a4d57a90e`; it is awaiting judge evaluation.
-The previous live score remains 0/12.
+The final six-claim publication gate passed. The live evaluator recorded
+**12/12** at revision `8ca97b16e85f7220d5298dc4607f7623df2b5241`, with all six
+claims marked `FALSIFIED` and reproduction quality `high`.
 
-The former arithmetic-only verifier is labeled **Historical rejected
-baseline** in the logbook and remains reachable.
+The pre-live gate and its 0/12 or 4/12 records remain preserved as historical
+evidence in the logbook. The current release report and verdict snapshot are
+the authoritative reader-facing records.
