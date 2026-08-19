@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this reproduction or audit, please cite this repository and the original paper."
+type: software
+title: "Independent audit of Accelerating Regression Tasks with Quantum Algorithms"
+version: "1.0.0"
+date-released: 2026-08-19
+authors:
+  - name: MachineLearning-Nerd
+repository-code: "https://github.com/MachineLearning-Nerd/icml26-quantum-regression"
+url: "https://github.com/MachineLearning-Nerd/icml26-quantum-regression"
+abstract: "Claim-by-claim CPU and statevector reproduction audit of Accelerating Regression Tasks with Quantum Algorithms."
+keywords:
+  - quantum regression
+  - quantum algorithms
+  - quantum Lasso
+  - statevector simulation
+  - reproduction
+preferred-citation:
+  type: article
+  title: "Accelerating Regression Tasks with Quantum Algorithms"
+  authors:
+    - family-names: Liu
+      given-names: Chenghua
+    - family-names: Ji
+      given-names: Zhengfeng
+  year: 2025
+  url: "https://arxiv.org/abs/2509.24757"

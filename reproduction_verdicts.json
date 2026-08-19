@@ -1,0 +1,26 @@
+{
+  "schema_version": "1",
+  "overall_status": "ALL_SIX_CLAIMS_FALSIFIED_C1_C4_HIGH_CONFIDENCE_C5_C6_MEDIUM_CONFIDENCE_LIVE_SCORE_12_OF_12",
+  "source_scope": "arXiv:2509.24757",
+  "cumulative_evidence": "PASS_RELEASE_AND_LIVE_JUDGE",
+  "claims": {
+    "C1": "FALSIFIED_HIGH_CONFIDENCE",
+    "C2": "FALSIFIED_HIGH_CONFIDENCE",
+    "C3": "FALSIFIED_HIGH_CONFIDENCE",
+    "C4": "FALSIFIED_HIGH_CONFIDENCE",
+    "C5": "FALSIFIED_MEDIUM_CONFIDENCE",
+    "C6": "FALSIFIED_MEDIUM_CONFIDENCE"
+  },
+  "live_score": {
+    "points": 12,
+    "total": 12,
+    "quality": "high",
+    "judged_at": "2026-07-31T06:57:29+00:00",
+    "snapshot_sha": "8ca97b16e85f7220d5298dc4607f7623df2b5241",
+    "current_score_claim": true
+  },
+  "publication_gate_passed": true,
+  "publication_allowed": false,
+  "official_author_endorsement": false,
+  "boundary": "The result applies to the named quantum regression contracts, not every conceivable quantum regression algorithm, and is based on CPU/statevector evidence rather than quantum hardware."
+}

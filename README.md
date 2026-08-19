@@ -4,6 +4,18 @@ Independent reproduction audit for [arXiv:2509.24757](https://arxiv.org/abs/2509
 “Accelerating Regression Tasks with Quantum Algorithms,” by Chenghua Liu and
 Zhengfeng Ji.
 
+## Audit record
+
+Overall status:
+`ALL_SIX_CLAIMS_FALSIFIED_C1_C4_HIGH_CONFIDENCE_C5_C6_MEDIUM_CONFIDENCE_LIVE_SCORE_12_OF_12`.
+
+The standardized claim ledger is [`CLAIM_EVIDENCE.md`](CLAIM_EVIDENCE.md), the
+source/version record is [`SOURCE_AUDIT.md`](SOURCE_AUDIT.md), and the final
+GitHub branch/identity check is [`verify_final.py`](verify_final.py).
+`current_score_claim=true` because the live evaluator snapshot is retained and
+verified; `official_author_endorsement=false` and
+`publication_allowed=false` remain explicit boundaries.
+
 ## Result at a glance
 
 The evaluator-facing release received **12/12** at revision

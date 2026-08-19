@@ -2,6 +2,22 @@
 
 **State: complete; the live evaluator recorded 12/12.**
 
+## Standard audit record
+
+`ALL_SIX_CLAIMS_FALSIFIED_C1_C4_HIGH_CONFIDENCE_C5_C6_MEDIUM_CONFIDENCE_LIVE_SCORE_12_OF_12`
+
+| Gate | Value |
+| --- | --- |
+| Live judge score | `12/12`, verified snapshot |
+| Current score claim | `true` |
+| Publication gate | `passed` |
+| Official author endorsement | `false` |
+| Publication authorization | `false` |
+
+The current live-judge snapshot is authoritative for the score and final
+verdict. Older top-level route artifacts are preserved as development history;
+they are not the final claim status.
+
 - Paper: [arXiv:2509.24757](https://arxiv.org/abs/2509.24757)
 - Authors: Chenghua Liu and Zhengfeng Ji
 - Live verdict revision: `8ca97b16e85f7220d5298dc4607f7623df2b5241`

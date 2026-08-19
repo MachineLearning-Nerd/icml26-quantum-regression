@@ -1,0 +1,51 @@
+{
+  "schema_version": "1",
+  "paper_source": "arXiv:2509.24757",
+  "overall_status": "ALL_SIX_CLAIMS_FALSIFIED_C1_C4_HIGH_CONFIDENCE_C5_C6_MEDIUM_CONFIDENCE_LIVE_SCORE_12_OF_12",
+  "required_evidence": [
+    "README.md",
+    "STATUS.md",
+    "CLAIM_EVIDENCE.md",
+    "SOURCE_AUDIT.md",
+    "docs/SOURCE_AUDIT.md",
+    "ENVIRONMENT.md",
+    "REPORT.md",
+    "branch-audit.md",
+    "repro/src/verify.py",
+    "repro/src/publication_gate.py",
+    "outputs/verdict.json",
+    "outputs/publication_gate.json",
+    ".trackio/logbook/evidence/release/live_judge_verdict.json",
+    ".trackio/logbook/evidence/release/final_release_report.md",
+    ".trackio/logbook/pages/claim-1/page.md",
+    ".trackio/logbook/pages/claim-2/page.md",
+    ".trackio/logbook/pages/claim-3/page.md",
+    ".trackio/logbook/pages/claim-4/page.md",
+    ".trackio/logbook/pages/claim-5/page.md",
+    ".trackio/logbook/pages/claim-6/page.md",
+    "claims.json",
+    "reproduction_verdicts.json",
+    "AUTONOMOUS_STATE.json",
+    "CITATION.cff",
+    "AUTHOR_THANK_YOU.md",
+    "verify_final.py"
+  ],
+  "controls": {
+    "independent_checkers": true,
+    "negative_controls": true,
+    "statevector_simulation": true,
+    "source_version_pinned": true,
+    "publication_gate_passed": true,
+    "quantum_hardware_used": false,
+    "gpu_used": false
+  },
+  "source_hashes": {
+    "source_archive": "bd48105ab08395ba1edbdb3a407eee9f2e1a8464521d7d67dbe5b6e96edf2549",
+    "live_judge_snapshot": "8ca97b16e85f7220d5298dc4607f7623df2b5241"
+  },
+  "publication": {
+    "current_score_claim": true,
+    "publication_allowed": false,
+    "official_author_endorsement": false
+  }
+}

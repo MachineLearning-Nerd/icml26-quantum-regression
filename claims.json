@@ -1,0 +1,44 @@
+{
+  "schema_version": "1",
+  "paper": "Accelerating Regression Tasks with Quantum Algorithms",
+  "paper_source": "arXiv:2509.24757",
+  "overall_status": "ALL_SIX_CLAIMS_FALSIFIED_C1_C4_HIGH_CONFIDENCE_C5_C6_MEDIUM_CONFIDENCE_LIVE_SCORE_12_OF_12",
+  "claims": [
+    {
+      "id": "C1",
+      "status": "FALSIFIED_HIGH_CONFIDENCE",
+      "evidence": "repro/src/claim1_runtime_audit.py; .trackio/logbook/pages/claim-1/page.md",
+      "claim_page": ".trackio/logbook/pages/claim-1/page.md"
+    },
+    {
+      "id": "C2",
+      "status": "FALSIFIED_HIGH_CONFIDENCE",
+      "evidence": "repro/src/downstream_contract_audit.py; .trackio/logbook/pages/claim-2/page.md",
+      "claim_page": ".trackio/logbook/pages/claim-2/page.md"
+    },
+    {
+      "id": "C3",
+      "status": "FALSIFIED_HIGH_CONFIDENCE",
+      "evidence": "repro/src/claim3_lasso_counterexample.py; .trackio/logbook/pages/claim-3/page.md",
+      "claim_page": ".trackio/logbook/pages/claim-3/page.md"
+    },
+    {
+      "id": "C4",
+      "status": "FALSIFIED_HIGH_CONFIDENCE",
+      "evidence": "repro/src/downstream_contract_audit.py; .trackio/logbook/pages/claim-4/page.md",
+      "claim_page": ".trackio/logbook/pages/claim-4/page.md"
+    },
+    {
+      "id": "C5",
+      "status": "FALSIFIED_MEDIUM_CONFIDENCE",
+      "evidence": "repro/src/downstream_contract_audit.py; .trackio/logbook/pages/claim-5/page.md",
+      "claim_page": ".trackio/logbook/pages/claim-5/page.md"
+    },
+    {
+      "id": "C6",
+      "status": "FALSIFIED_MEDIUM_CONFIDENCE",
+      "evidence": "repro/src/downstream_contract_audit.py; .trackio/logbook/pages/claim-6/page.md",
+      "claim_page": ".trackio/logbook/pages/claim-6/page.md"
+    }
+  ]
+}

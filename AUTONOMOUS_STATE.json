@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "paper_source": "arXiv:2509.24757",
+  "openreview_id": "TBSyYj4VV6",
+  "phase": "live_judged_release_complete",
+  "overall_status": "ALL_SIX_CLAIMS_FALSIFIED_C1_C4_HIGH_CONFIDENCE_C5_C6_MEDIUM_CONFIDENCE_LIVE_SCORE_12_OF_12",
+  "next_action": "retain_live_judge_snapshot_and_do_not_generalize_beyond_named_contracts",
+  "current_score_claim": true,
+  "publication_allowed": false,
+  "official_author_endorsement": false,
+  "live_judge": {
+    "points": 12,
+    "total": 12,
+    "quality": "high",
+    "judged_at": "2026-07-31T06:57:29+00:00",
+    "snapshot_sha": "8ca97b16e85f7220d5298dc4607f7623df2b5241",
+    "source": "https://huggingface.co/datasets/ICML-2026-agent-repro/verdicts"
+  },
+  "publication_record": {
+    "publication_gate_passed": true,
+    "space_id": "DineshAI/repro-accelerating-regression-tasks-with-quantum-algorithms"
+  },
+  "repository_identity": {
+    "owner": "MachineLearning-Nerd",
+    "canonical_email": "MachineLearning-Nerd@users.noreply.github.com",
+    "recovery_bundle_sha256": "adad0ed57647c70a58ee3a4c2c8e01fc33d6daa68cdc0f562a89d0730747f7fa"
+  },
+  "github_repository": "https://github.com/MachineLearning-Nerd/icml26-quantum-regression"
+}
